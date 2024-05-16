@@ -5,27 +5,21 @@ import Song from "./Song";
 
 export default function App() {
     const dataType = "track";
-    const [songs, setSongs] = useState(null);
+    const [song, setSong] = useState(null);
 
     async function fetchData(searchTerm = "Aretha Franklin") {
-        const baseURL = "https://www.apitutor.org/spotify/simple/v1/search";
+        const baseURL = "https://www.apitutor.org/spotify/simple/one/v1/search";
         const url = `${baseURL}?q=${searchTerm}&type=${dataType}`;
         const request = await fetch(url);
         const result = await request.json();
         console.log(result);
         // New: set state variable to redraw...
-        setSongs(result);
+        setSong(result);
     }
 
     function showSongs() {
-        if (songs) {
-            return (
-                <div className="songs-container">
-                    {songs.map((song) => (
-                        <Song key={song.id} songData={song} />
-                    ))}
-                </div>
-            );
+        if (song) {
+            return <Song key={song.id} songData={song} />;
         } else {
             return "";
         }
