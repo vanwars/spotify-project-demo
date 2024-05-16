@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Space } from "antd";
 import "./SearchForm.css";
 
 export default function SearchForm({ searchFunction }) {
@@ -14,16 +14,7 @@ export default function SearchForm({ searchFunction }) {
 
     return (
         <div className="form-container">
-            <Form
-                name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                style={{ maxWidth: 600 }}
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="off"
-            >
+            <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
                 <Form.Item
                     label="Search Term"
                     name="search_term"
@@ -34,18 +25,12 @@ export default function SearchForm({ searchFunction }) {
                         },
                     ]}
                 >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
-                >
-                    <Button type="primary" htmlType="submit">
-                        Submit
-                    </Button>
+                    <Space>
+                        <Input />
+                        <Button type="primary" htmlType="submit">
+                            Search
+                        </Button>
+                    </Space>
                 </Form.Item>
             </Form>
         </div>
